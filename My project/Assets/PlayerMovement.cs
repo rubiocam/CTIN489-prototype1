@@ -8,13 +8,19 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f; // Horizontal movement speed
     public float jumpForce = 10f; // Jumping force
 
+    [Header("Audio Settings")]
+    public AudioClip walkSound; // Sound to play while walking
+    public float walkSoundVolume = 0.5f; // Volume of the walking sound
+
     private Rigidbody2D rb; // Reference to Rigidbody2D
     private float horizontalInput; // Player's horizontal input
     private bool isFacingRight = true; // Track the character's facing direction
+    private AudioSource audioSource; // Reference to the AudioSource component
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component
+        audioSource = GetComponent<AudioSource>(); // Get the AudioSource component
     }
 
     void Update()
@@ -30,6 +36,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Flip the character's sprite based on movement direction
         FlipCharacter();
+
+        // Play or stop walking sound based on movement
+        HandleMovementSound();
     }
 
     void FixedUpdate()
@@ -66,5 +75,22 @@ public class PlayerMovement : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+    }
+
+    void HandleMovementSound()
+    {
+        // Play walking sound when the player is moving
+        if (Mathf.Abs(horizontalInput) > 0 && !audioSource.isPlaying)
+        {
+            audioSource.clip = walkSound;
+            audioSource.volume = walkSoundVolume;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+        // Stop walking sound when the player stops moving
+        else if (Mathf.Abs(horizontalInput) == 0 && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
     }
 }
