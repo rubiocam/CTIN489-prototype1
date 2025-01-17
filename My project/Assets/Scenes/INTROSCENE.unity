@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e27a62399baf424cabfc58a6462fce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainGameSceneName: MainGameScene
+  mainGameSceneName: GAMEPLAY
 --- !u!4 &89110568
 Transform:
   m_ObjectHideFlags: 0
@@ -246,7 +246,7 @@ Transform:
   m_GameObject: {fileID: 267345624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.39, y: -1.25, z: 0}
+  m_LocalPosition: {x: 5.39, y: -1.69, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -265,9 +265,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  directionChangeInterval: 0.5
-  boundarySize: 75
-  edgeBuffer: 1
+  directionChangeInterval: 1
+  boundarySize: 250
+  edgeBuffer: 0.5
 --- !u!1 &552248116
 GameObject:
   m_ObjectHideFlags: 0

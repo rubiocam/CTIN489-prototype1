@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class IntroScreenManager : MonoBehaviour
 {
-    public string mainGameSceneName = "MainGameScene"; // Name of your main game scene
+    private string mainGameSceneName = "GAMEPLAY"; // Name of your main game scene
 
     void Update()
     {
